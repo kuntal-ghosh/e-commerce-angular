@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Cart, CartItem } from '../models/cart.interface';
 import { Product } from '../models/product.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,9 @@ import { Product } from '../models/product.interface';
 export class CartService {
   private cart: Cart = { items: [], total: 0 };
   private cartSubject = new BehaviorSubject<Cart>(this.cart);
+
+  constructor(  private toastr: ToastrService
+  ) { }
 
   cart$ = this.cartSubject.asObservable();
 
@@ -22,6 +26,8 @@ export class CartService {
     }
 
     this.updateCart();
+    this.toastr.success(`${product.title} is added in cart`, 'Success');
+
   }
 
   removeFromCart(productId: number): void {

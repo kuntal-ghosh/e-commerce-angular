@@ -12,9 +12,8 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 </style>
 
-<app-header/>
+<app-header></app-header>
 <app-cart></app-cart>
-
 <main class="pt-16">
   <!-- Hero Section -->
   <section class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
@@ -33,7 +32,7 @@
       <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         @for (product of products; track product.id) {
-          <app-card [product]="product"></app-card>
+          <app-card [product]="product" (productChange)="onProductUpdate($event)"></app-card>
         }
       </div>
     </div>
