@@ -15,31 +15,12 @@
 <app-header></app-header>
 <app-cart></app-cart>
 <main class="pt-16">
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-bold mb-4">Welcome to Our Store</h1>
-      <p class="text-xl mb-8">Discover amazing products at great prices</p>
-      <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">
-        Shop Now
-      </button>
-    </div>
-  </section>
 
-  <!-- Featured Products Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        @for (product of products; track product.id) {
-          <app-card [product]="product" (productChange)="onProductUpdate($event)"></app-card>
-        }
-      </div>
-    </div>
-  </section>
+
+
 
   <!-- Categories Section -->
-  <section class="py-16">
+  <!-- <section class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -49,10 +30,10 @@
             <h3 class="text-white text-xl font-bold">Category 1</h3>
           </div>
         </article>
-        <!-- More category cards -->
       </div>
     </div>
-  </section>
+  </section> -->
+  <router-outlet></router-outlet>
 </main>
 
 <!-- Newsletter Section -->
@@ -102,4 +83,3 @@
   </div>
 </footer>
 
-<router-outlet></router-outlet>

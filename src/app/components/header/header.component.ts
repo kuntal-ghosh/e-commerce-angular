@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { UiService } from '../../services/ui.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private uiService: UiService
+    private uiService: UiService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
