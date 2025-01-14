@@ -1,0 +1,50 @@
+<div class="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="text-center text-3xl font-extrabold text-gray-900">
+      Register
+    </h2>
+    <p>Form Status: {{ registerForm.status }}</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="name" class="sr-only">Name</label>
+          <input id="name" formControlName="name" type="text" autocomplete="name" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Name">
+          <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors" class="text-red-500 text-sm mt-1">
+            <span *ngIf="registerForm.get('name')?.errors?.['required']">Name is required</span>
+            <span *ngIf="registerForm.get('name')?.errors?.['minlength']">Name must be at least 2 characters</span>
+          </div>
+        </div>
+        <div>
+          <label for="email-address" class="sr-only">Email address</label>
+          <input id="email-address" formControlName="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+          <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors" class="text-red-500 text-sm mt-1">
+            <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</span>
+            <span *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+          </div>
+        </div>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+          <input id="password" formControlName="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+          <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors" class="text-red-500 text-sm mt-1">
+            <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</span>
+            <span *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+          </div>
+        </div>
+        <div>
+          <label for="confirm-password" class="sr-only">Confirm Password</label>
+          <input id="confirm-password" formControlName="confirmPassword" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm Password">
+          <div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.errors" class="text-red-500 text-sm mt-1">
+            <span *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required</span>
+            <span *ngIf="registerForm.get('confirmPassword')?.errors?.['passwordMismatch']">Passwords do not match</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,19 +1,27 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { ProtectedComponent } from './components/protected/protected.component';
 
 export const routes: Routes = [
   // { path: '', component: HomePageComponent },
   {
     path: '',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./features/home/home.routes').then(m => m.HOME_ROUTES)
   },
 
   {
     path: 'products',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./features/products/products.routes').then(m => m.PRODUCTS_ROUTES)
   },
   {
     path: '',
-    loadChildren: () => import('./features/user/user.routes').then(m => m.Auth_ROUTES)
+    loadChildren: () => import('./features/user/user.routes').then(m => m.USER_ROUTES)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES)
   },
   // {
   //   path: 'cart',

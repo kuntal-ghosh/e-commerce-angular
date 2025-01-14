@@ -33,7 +33,14 @@
       </div>
     </div>
   </section> -->
-  <router-outlet></router-outlet>
+  @if (authService.isLoadingAuth()) {
+    <div class="fixed inset-0 flex items-center justify-center bg-white">
+      <!-- Add your loading spinner here -->
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+    </div>
+  } @else {
+    <router-outlet></router-outlet>
+  }
 </main>
 
 <!-- Newsletter Section -->
